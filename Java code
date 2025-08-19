@@ -1,0 +1,30 @@
+// File: FileHandlingUtility.java
+import java.io.*;
+
+public class FileHandlingUtility {
+    public static void main(String[] args) {
+        try {
+            // Write to a file
+            FileWriter writer = new FileWriter("demo.txt");
+            writer.write("Hello, this is a test file.\n");
+            writer.close();
+
+            // Read the file
+            BufferedReader reader = new BufferedReader(new FileReader("demo.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            reader.close();
+
+            // Append to the file
+            FileWriter appendWriter = new FileWriter("demo.txt", true);
+            appendWriter.write("Adding more content.\n");
+            appendWriter.close();
+
+            System.out.println("File operations completed.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
